@@ -209,18 +209,39 @@
 
     /* ── VALEUR ET PATRIMOINE ── */
     #valeur { max-width: 100%; background: var(--navy); }
-    #valeur .inner { max-width: 1200px; margin: 0 auto; padding: 100px 60px; }
-    .valeur-card { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid rgba(196,164,107,.2); }
-    .valeur-text { padding: 64px; border-right: 1px solid rgba(196,164,107,.2); }
-    .valeur-stats-panel { padding: 64px; background: var(--navy-2); }
+    #valeur .inner { max-width: 1200px; margin: 0 auto; padding: 120px 60px; }
+    /* VP hero */
+    .vp-hero { text-align: center; margin-bottom: 100px; }
+    .vp-hero h2 { font-size: clamp(2.4rem,5vw,4.2rem); letter-spacing: .12em; margin-bottom: 18px; }
+    .vp-hero-sub { font-size: .9rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 48px; display: block; }
+    .vp-hero-divider { width: 80px; height: 1px; background: var(--gold); margin: 0 auto 48px; }
+    /* histoire */
+    .vp-histoire { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 100px; }
+    .vp-histoire-left h3 { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--cream); margin-bottom: 28px; }
+    .vp-histoire-left p { font-size: .9rem; color: rgba(242,235,224,.75); line-height: 1.9; margin-bottom: 16px; }
+    .vp-histoire-right { padding-top: 8px; }
+    /* stats row */
+    .vp-stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid rgba(196,164,107,.2); margin-bottom: 100px; }
+    .vp-stat-block { padding: 48px 36px; border-right: 1px solid rgba(196,164,107,.2); text-align: center; }
+    .vp-stat-block:last-child { border-right: none; }
+    .vp-stat-num { font-family: var(--serif); font-size: 3.2rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 14px; }
+    .vp-stat-label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
+    /* founders */
+    .vp-founders-title { text-align: center; margin-bottom: 60px; }
+    .vp-founders-title h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--cream); margin-bottom: 10px; }
+    .vp-founders-title p { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+    .vp-founders-grid { display: flex; gap: 60px; justify-content: center; flex-wrap: wrap; margin-bottom: 80px; }
+    .vp-founder-card { text-align: center; }
+    .vp-founder-img { width: 240px; height: 240px; overflow: hidden; border: 2px solid rgba(196,164,107,.4); }
+    .vp-founder-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .vp-founder-name { font-family: var(--serif); font-size: 1.15rem; color: var(--cream); margin-top: 20px; margin-bottom: 6px; }
+    .vp-founder-role { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+    /* contact strip */
+    .vp-contact-strip { border-top: 1px solid rgba(196,164,107,.2); padding-top: 48px; display: flex; gap: 60px; flex-wrap: wrap; align-items: flex-start; }
+    .vp-contact-item { font-size: .82rem; color: var(--muted); line-height: 1.8; }
+    .vp-contact-item a { color: rgba(196,164,107,.8); text-decoration: none; }
+    /* old classes kept for compat */
     .vp-label { font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--gold); margin-bottom: 24px; }
-    .valeur-text h2 { margin-bottom: 20px; }
-    .valeur-text p { font-size: .9rem; }
-    .vp-stats { margin-top: 48px; }
-    .vp-stat { padding: 24px 0; border-bottom: 1px solid rgba(196,164,107,.12); }
-    .vp-stat:last-child { border-bottom: none; }
-    .vp-num { font-family: var(--serif); font-size: 2.4rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 6px; }
-    .vp-desc { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
     .vp-partnership {
       display: flex; align-items: flex-start; gap: 16px; margin-top: 36px; padding: 20px;
       background: rgba(196,164,107,.06); border: 1px solid rgba(196,164,107,.15);
@@ -296,6 +317,14 @@
       #reach .reach-grid,
       #sports .sports-grid,
       .lt-grid,
+      .vp-histoire { grid-template-columns: 1fr; gap: 40px; }
+      .vp-stats-row { grid-template-columns: repeat(2,1fr); }
+      .vp-stat-block { border-right: none; border-bottom: 1px solid rgba(196,164,107,.2); }
+      .vp-stat-block:nth-child(odd) { border-right: 1px solid rgba(196,164,107,.2); }
+      .vp-stat-block:nth-last-child(-n+2) { border-bottom: none; }
+      .vp-founder-img { width: 180px; height: 180px; }
+      .vp-contact-strip { flex-direction: column; gap: 32px; }
+      .vp-hero h2 { font-size: 2rem; }
       .valeur-card,
       .expertise-intro,
       #contact .inner { grid-template-columns: 1fr; gap: 40px; }
@@ -521,33 +550,106 @@
 <!-- VALEUR ET PATRIMOINE -->
 <div id="valeur">
   <div class="inner">
-    <div class="section-label reveal">Strategic Partnership · Executive Role</div>
-    <div class="valeur-card reveal">
-      <div class="valeur-text">
-        <div class="vp-label">Valeurs &amp; Patrimoine · Premier HUB d'investissement au Maroc</div>
-        <h2>COO — Valeurs<br><em>&amp; Patrimoine</em></h2>
-        <p>Taib Ait Malek serves as <strong style="color:var(--cream)">Chief Operating Officer</strong> of Valeurs &amp; Patrimoine — Morocco's foremost investment and wealth management hub. In this executive role, he orchestrates international business development and brings his global network of investors, institutions, and high-net-worth individuals directly into Morocco's most dynamic real estate market.</p>
-        <p>Valeurs &amp; Patrimoine guides discerning investors through structuring, acquisition, and portfolio enhancement — with exclusive partnerships with Morocco's leading developers across Marrakech, Casablanca and beyond.</p>
-        <div class="vp-partnership">
-          <div class="vp-checkmark">◆</div>
-          <p class="vp-part-text">Direct line: <strong style="color:var(--gold)">taib@valeurs-patrimoine.com</strong> &nbsp;·&nbsp; www.valeurs-patrimoine.com</p>
-        </div>
+
+    <!-- Hero -->
+    <div class="vp-hero reveal">
+      <div class="section-label" style="justify-content:center; margin-bottom:20px;">Immobilier &amp; Patrimoine</div>
+      <h2>VALEUR <em>&amp;</em> PATRIMOINE</h2>
+      <span class="vp-hero-sub">L'investissement immobilier, pensé autrement</span>
+      <div class="vp-hero-divider"></div>
+    </div>
+
+    <!-- Notre Histoire -->
+    <div class="vp-histoire reveal">
+      <div class="vp-histoire-left">
+        <h3>Notre Histoire</h3>
+        <p>Valeur &amp; Patrimoine est né d'une conviction simple : l'investissement immobilier ne doit jamais être laissé au hasard.</p>
+        <p>Depuis plusieurs années, nous accompagnons particuliers, investisseurs et expatriés dans la structuration, l'acquisition et la valorisation de leur patrimoine immobilier, au Maroc et à l'international. Face à un marché en constante évolution, notre mission est d'apporter clarté, stratégie et sécurité à chaque projet.</p>
       </div>
-      <div class="valeur-stats-panel">
-        <div class="section-label">Platform at a Glance</div>
-        <div class="vp-stats">
-          <div class="vp-stat"><div class="vp-num">10+</div><div class="vp-desc">Years of Expertise</div></div>
-          <div class="vp-stat"><div class="vp-num">300+</div><div class="vp-desc">Clients Successfully Guided</div></div>
-          <div class="vp-stat"><div class="vp-num">500+</div><div class="vp-desc">Projects Analysed &amp; Structured</div></div>
-          <div class="vp-stat"><div class="vp-num">3+</div><div class="vp-desc">Countries of Operation</div></div>
-        </div>
-        <div style="margin-top:32px; padding-top:32px; border-top:1px solid rgba(196,164,107,.15);">
-          <p style="font-size:.8rem; color:var(--muted); max-width:100%; margin-bottom:12px;">Centre d'Affaires Essalam,<br>Boulevard Moulay Rachid · Marrakech</p>
-          <p style="font-size:.78rem; max-width:100%; margin-bottom:6px;"><a href="mailto:taib@valeurs-patrimoine.com" style="color:rgba(196,164,107,.8); text-decoration:none;">taib@valeurs-patrimoine.com</a></p>
-          <p style="font-size:.78rem; max-width:100%; margin:0;"><a href="mailto:info@valeurs-patrimoine.com" style="color:rgba(196,164,107,.5); text-decoration:none;">info@valeurs-patrimoine.com</a></p>
+      <div class="vp-histoire-right">
+        <div class="section-label" style="margin-bottom:24px;">Notre approche</div>
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:1rem; flex-shrink:0; margin-top:2px;">◆</span>
+            <p style="font-size:.88rem; color:rgba(242,235,224,.75); line-height:1.8; margin:0;"><strong style="color:var(--cream); font-weight:500;">Structuration sur mesure</strong> — Chaque projet est analysé selon vos objectifs patrimoniaux, fiscaux et personnels.</p>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:1rem; flex-shrink:0; margin-top:2px;">◆</span>
+            <p style="font-size:.88rem; color:rgba(242,235,224,.75); line-height:1.8; margin:0;"><strong style="color:var(--cream); font-weight:500;">Sécurité juridique &amp; financière</strong> — Un accompagnement rigoureux à chaque étape, de la recherche à la signature.</p>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:1rem; flex-shrink:0; margin-top:2px;">◆</span>
+            <p style="font-size:.88rem; color:rgba(242,235,224,.75); line-height:1.8; margin:0;"><strong style="color:var(--cream); font-weight:500;">Réseau exclusif</strong> — Accès privilégié aux meilleurs promoteurs au Maroc et à l'international.</p>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <span style="color:var(--gold); font-size:1rem; flex-shrink:0; margin-top:2px;">◆</span>
+            <p style="font-size:.88rem; color:rgba(242,235,224,.75); line-height:1.8; margin:0;"><strong style="color:var(--cream); font-weight:500;">Expertise expatriés</strong> — Solutions adaptées aux Marocains du monde et aux investisseurs étrangers.</p>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Stats -->
+    <div class="vp-stats-row reveal">
+      <div class="vp-stat-block">
+        <div class="vp-stat-num">10+</div>
+        <div class="vp-stat-label">Années d'expertise immobilière &amp; patrimoniale</div>
+      </div>
+      <div class="vp-stat-block">
+        <div class="vp-stat-num">300+</div>
+        <div class="vp-stat-label">Clients accompagnés avec succès</div>
+      </div>
+      <div class="vp-stat-block">
+        <div class="vp-stat-num">500+</div>
+        <div class="vp-stat-label">Projets immobiliers analysés et structurés</div>
+      </div>
+      <div class="vp-stat-block">
+        <div class="vp-stat-num">3+</div>
+        <div class="vp-stat-label">Pays d'intervention (Maroc &amp; international)</div>
+      </div>
+    </div>
+
+    <!-- Co-fondateurs -->
+    <div class="reveal">
+      <div class="vp-founders-title">
+        <h3>Nos Co-Fondateurs</h3>
+        <p>Une vision commune, une expertise complémentaire</p>
+      </div>
+      <div class="vp-founders-grid">
+        <div class="vp-founder-card">
+          <div class="vp-founder-img">
+            <img src="Gemini_Generated_Image_an4z6fan4z6fan4z.png" alt="Taib Ait-Malek" />
+          </div>
+          <p class="vp-founder-name">Taib Ait-Malek</p>
+          <p class="vp-founder-role">Co-Fondateur &amp; Directeur Général</p>
+        </div>
+        <div class="vp-founder-card">
+          <div class="vp-founder-img">
+            <img src="Gemini_Generated_Image_23ixww23ixww23ix.png" alt="Youssef Douh" />
+          </div>
+          <p class="vp-founder-name">Youssef Douh</p>
+          <p class="vp-founder-role">Co-Fondateur &amp; Directeur Associé</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact strip -->
+    <div class="vp-contact-strip reveal">
+      <div class="vp-contact-item">
+        <div style="font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Adresse</div>
+        Centre d'Affaires Essalam<br>Boulevard Moulay Rachid · Marrakech
+      </div>
+      <div class="vp-contact-item">
+        <div style="font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Contact</div>
+        <a href="mailto:taib@valeurs-patrimoine.com">taib@valeurs-patrimoine.com</a><br>
+        <a href="mailto:info@valeurs-patrimoine.com" style="color:rgba(196,164,107,.5);">info@valeurs-patrimoine.com</a>
+      </div>
+      <div class="vp-contact-item">
+        <div style="font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Site web</div>
+        <a href="https://www.valeurs-patrimoine.com">www.valeurs-patrimoine.com</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
